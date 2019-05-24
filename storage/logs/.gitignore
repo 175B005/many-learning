@@ -1,0 +1,7 @@
+*
+!.gitignore
+/vendor
+.env
+.composer.json
+.composer.lock
+readme.md
