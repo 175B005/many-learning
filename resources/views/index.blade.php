@@ -19,9 +19,13 @@
     <h1>ーーーあなたのツイート一覧ーーー</h1>
 
       @foreach ($twiiteList as $twiite)
-      <div style="border: 1px solid #000; display: box; width: 400px; margin-top: 2px">
-        <p>{{ $twiite->contents }}</p>
+      <div style="border: 1px solid #000; display: block; width: 400px; margin-top: 2px">
+        <p style="display: inline-block">{{ $twiite->contents }}</p>
       </div>
+        @foreach($twiite->tags as $tag)
+          <p style="display: inline-block; margin-left: 10px; border: 1px solid #5fa; width: 100px">{{ $tag }}</p>
+        @endforeach
+
       @endforeach
 </body>
 </html>

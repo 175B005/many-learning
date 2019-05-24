@@ -22,8 +22,19 @@ class TwiiteController extends Controller
 
         $twiiteList = $this->twiite->where('user_id',$userId)
             ->orderby('created_at','desc')
-            ->get();//ユーザのtwiite全取得
-            
+            ->get();//
+
+        foreach($twiiteList as $twiiteRecord){
+
+          $tags = $twiiteRecord->tags()->orderby('tag_id')->get();
+
+          $tagName = [];
+          foreach($tags as $tagRecord){
+            $tagName[] = $tagRecord->name;
+          }
+          $twiiteRecord['tags'] = $tagName;
+        }
+
         return view('index', compact('twiiteList', 'userId'));//index view
     }
 
