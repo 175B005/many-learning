@@ -1,2 +1,0 @@
-# many-learning
-belongstomanyメソッドを使いたいだけのツイートタグの中間テーブル作成
