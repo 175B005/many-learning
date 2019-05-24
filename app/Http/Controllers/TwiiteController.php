@@ -22,17 +22,17 @@ class TwiiteController extends Controller
 
         $twiiteList = $this->twiite->where('user_id',$userId)
             ->orderby('created_at','desc')
-            ->get();//
+            ->get();//ツイート全件取得
 
         foreach($twiiteList as $twiiteRecord){
 
-          $tags = $twiiteRecord->tags()->orderby('tag_id')->get();
+          $tags = $twiiteRecord->tags()->orderby('tag_id')->get();//中間テーブル経由でタグのrecordを取得
 
           $tagName = [];
-          foreach($tags as $tagRecord){
-            $tagName[] = $tagRecord->name;
+          foreach($tags as $tagRecord){//タグも複数あるので、繰り返す。
+            $tagName[] = $tagRecord->name;//取得してきたレコードのid
           }
-          $twiiteRecord['tags'] = $tagName;
+          $twiiteRecord['tags'] = $tagName;//送るデータに追加（同foreachで回すため）
         }
 
         return view('index', compact('twiiteList', 'userId'));//index view
