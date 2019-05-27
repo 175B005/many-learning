@@ -14,4 +14,9 @@ class Tag extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function twiites()
+     {
+         return $this->belongsToMany(Twiite::class);
+     }
 }

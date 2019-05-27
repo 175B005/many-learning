@@ -22,8 +22,16 @@
       <div style="border: 1px solid #000; display: block; width: 400px; margin-top: 2px">
         <p style="display: inline-block">{{ $twiite->contents }}</p>
       </div>
+      <?php $first = true; ?>
         @foreach($twiite->tags as $tag)
-          <p style="display: inline-block; margin-left: 10px; border: 1px solid #5fa; width: 100px">{{ $tag }}</p>
+        <a href="twiite?tag={{ $tag }} " style="
+          <?php echo !empty($_GET['tag']) & $first ?
+           'color: red' : 'color: inherit'
+          ?>
+        ">
+         <?php $first = false; ?>
+          <p style="display: inline-block; margin-left: 10px; border: 1px solid #5fa; max-width: 200px">{{ $tag }}</p>
+        </a>
         @endforeach
 
       @endforeach
